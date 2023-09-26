@@ -115,19 +115,11 @@ public class Polynomial {
 			if(op_pos==-1) {
 				a.expo[size]=Integer.parseInt(s[i]);
 				++size;
-			}else if(op_pos==0){
-				a.expo[size]=1;
-				++size;
-				a.coeff[size]=Double.parseDouble(s[i]);
 			}else {
 				a.expo[size]=Integer.parseInt(s[i].substring(0,op_pos));
 				++size;
 				a.coeff[size]=Double.parseDouble(s[i].substring(op_pos));
 			}
-		}
-		if(Line.charAt(Line.length()-1)=='x') {
-			a.expo[size]=1;
-			++size;
 		}
 		coeff=new double[size];
 		expo=new int[size];
@@ -136,31 +128,18 @@ public class Polynomial {
 			expo[i]=a.expo[i];
 		}
 	}
-	public String coeff_trans(double x) {
-		String s="";
-		if(Math.abs(x-(double)(int)x)<1e-8) s+=(int)x;
-		else s+=x;
-		return s;
-	}
 	public void saveToFile(String path) throws IOException {
 		String s="";
 		boolean first_op=true;
 		for(int i=0;i<coeff.length;++i) {
 			if(expo[i]==0) {
 				first_op=false;
-				s+=coeff_trans(coeff[i]);
-				continue;
-			}
-			if(expo[i]==1) {
-				if(!first_op && coeff[i]>0)s+="+";
-				first_op=false;
-				s+=coeff_trans(coeff[i]);
-				s+="x";
+				s+=coeff[i];
 				continue;
 			}
 			if(!first_op && coeff[i]>0)s+="+";
 			first_op=false;
-			s+=coeff_trans(coeff[i]);
+			s+=coeff[i];
 			s+="x";
 			s+=expo[i];
 		}
