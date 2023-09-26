@@ -21,7 +21,7 @@ public class Driver {
 		int [] c3_e = {1,2,5};
 		Polynomial p3 = new Polynomial(c3_c,c3_e);
 		double [] c4_c = {3,2,4};
-		int [] c4_e = {1,4,6};
+		int [] c4_e = {0,1,4};
 		Polynomial p4 = new Polynomial(c4_c,c4_e);
 		Polynomial prod = p1.multiply(p3);
 		System.out.println("prod:");
@@ -43,5 +43,7 @@ public class Driver {
 			System.out.println("coeff expo: "+p5.coeff[i]+" "+p5.expo[i]);
 		}
 		System.out.println();
+		
+		p5.saveToFile("/Users/yuchengcheng/b07lab1/output.txt");
 	}
 }

@@ -136,18 +136,36 @@ public class Polynomial {
 			expo[i]=a.expo[i];
 		}
 	}
+	public String coeff_trans(double x) {
+		String s="";
+		if(Math.abs(x-(double)(int)x)<1e-8) s+=(int)x;
+		else s+=x;
+		return s;
+	}
 	public void saveToFile(String path) throws IOException {
 		String s="";
+		boolean first_op=true;
 		for(int i=0;i<coeff.length;++i) {
 			if(expo[i]==0) {
-				s+=coeff[i];
+				first_op=false;
+				s+=coeff_trans(coeff[i]);
 				continue;
 			}
-			s+=coeff[i];
+			if(expo[i]==1) {
+				if(!first_op && coeff[i]>0)s+="+";
+				first_op=false;
+				s+=coeff_trans(coeff[i]);
+				s+="x";
+				continue;
+			}
+			if(!first_op && coeff[i]>0)s+="+";
+			first_op=false;
+			s+=coeff_trans(coeff[i]);
 			s+="x";
 			s+=expo[i];
 		}
 		FileWriter f=new FileWriter(path);
 		f.write(s);
+		f.close();
 	}
 }
