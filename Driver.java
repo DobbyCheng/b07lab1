@@ -4,11 +4,11 @@ public class Driver {
 	public static void main(String [] args) throws IOException {
 		Polynomial p = new Polynomial();
 		System.out.println(p.evaluate(3));
-		double [] c1_c = {6,5};
-		int [] c1_e = {0,3};
+		double [] c1_c = {5,6};
+		int [] c1_e = {3,0};
 		Polynomial p1 = new Polynomial(c1_c,c1_e);
-		double [] c2_c = {-2,-9};
-		int [] c2_e = {1,4};
+		double [] c2_c = {-9,-2};
+		int [] c2_e = {4,1};
 		Polynomial p2 = new Polynomial(c2_c,c2_e);
 		Polynomial s = p1.add(p2);
 		System.out.println("s(0.1) = " + s.evaluate(0.1));
@@ -17,8 +17,8 @@ public class Driver {
 		else
 			System.out.println("1 is not a root of s");
 		
-		double [] c3_c = {2,-4.8,4};
-		int [] c3_e = {1,2,5};
+		double [] c3_c = {-4.8,2,4};
+		int [] c3_e = {2,1,5};
 		Polynomial p3 = new Polynomial(c3_c,c3_e);
 		double [] c4_c = {3,2,4};
 		int [] c4_e = {0,1,4};
