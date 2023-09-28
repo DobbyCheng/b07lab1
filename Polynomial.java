@@ -4,8 +4,8 @@ public class Polynomial {
 	double[] coeff;
 	int[] expo;
 	public Polynomial() {
-		coeff=new double[1];
-		expo=new int[1];
+		coeff=new double[0];
+		expo=new int[0];
 	}
 	public Polynomial(double[] a,int[] b) {
 		coeff=new double[a.length];
